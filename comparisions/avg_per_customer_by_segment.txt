@@ -1,0 +1,26 @@
+                 LIFESTAGE PREMIUM_CUSTOMER  TOT_SALES  N_CUSTOMERS  AVG_SALES_PER_CUSTOMER
+8           OLDER FAMILIES       Mainstream   94674.85         2768               34.203342
+0           OLDER FAMILIES           Budget  154012.55         4589               33.561244
+13          OLDER FAMILIES          Premium   73607.40         2224               33.096853
+12          YOUNG FAMILIES          Premium   77074.50         2384               32.329908
+3           YOUNG FAMILIES           Budget  126942.05         3938               32.235157
+10          YOUNG FAMILIES       Mainstream   84735.45         2674               31.688650
+6    OLDER SINGLES/COUPLES          Premium  120995.85         4660               25.964775
+4    OLDER SINGLES/COUPLES           Budget  124752.80         4827               25.844790
+5    OLDER SINGLES/COUPLES       Mainstream  122167.10         4829               25.298633
+11  MIDAGE SINGLES/COUPLES       Mainstream   82790.35         3277               25.264068
+7                 RETIREES           Budget  103644.00         4362               23.760660
+9                 RETIREES          Premium   89308.55         3795               23.533215
+15  MIDAGE SINGLES/COUPLES          Premium   53454.35         2358               22.669360
+2                 RETIREES       Mainstream  141969.15         6318               22.470584
+17  MIDAGE SINGLES/COUPLES           Budget   32724.20         1470               22.261361
+19            NEW FAMILIES       Mainstream   15646.80          828               18.897101
+18            NEW FAMILIES           Budget   20002.45         1084               18.452445
+20            NEW FAMILIES          Premium   10564.50          575               18.373043
+1    YOUNG SINGLES/COUPLES       Mainstream  143832.40         7834               18.360020
+16   YOUNG SINGLES/COUPLES          Premium   38290.70         2470               15.502308
+14   YOUNG SINGLES/COUPLES           Budget   55923.60         3637               15.376299
+
+Families now dominate the top of the list — all three Older Families tiers and all three Young Families tiers sit in the top 6 by average spend per customer (~$32-34 each), even though none of them had the single highest total sales.
+Young Singles/Couples collapsed to near the bottom — despite Young Singles/Couples/Mainstream having the 2nd-highest total sales ($143,832) and the single largest customer base of any segment (7,834 people), its average spend per customer ($18.36) is among the lowest in the entire dataset. This segment's high total revenue is purely a "we have a lot of people" effect — each individual customer isn't spending much on chips at all. Same story for Young Singles/Couples Budget and Premium — both near the very bottom.
+Retirees Mainstream — 3rd highest total sales, but only mid-table on a per-customer basis ($22.47). Same pattern: high revenue driven by sheer customer count (6,318 people, the 2nd largest group), not by high individual spend.

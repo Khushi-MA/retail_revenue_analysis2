@@ -1,0 +1,23 @@
+Number of customers by segment:
+                 LIFESTAGE PREMIUM_CUSTOMER  N_CUSTOMERS
+0   MIDAGE SINGLES/COUPLES           Budget         1470
+1   MIDAGE SINGLES/COUPLES       Mainstream         3277
+2   MIDAGE SINGLES/COUPLES          Premium         2358
+3             NEW FAMILIES           Budget         1084
+4             NEW FAMILIES       Mainstream          828
+5             NEW FAMILIES          Premium          575
+6           OLDER FAMILIES           Budget         4589
+7           OLDER FAMILIES       Mainstream         2768
+8           OLDER FAMILIES          Premium         2224
+9    OLDER SINGLES/COUPLES           Budget         4827
+10   OLDER SINGLES/COUPLES       Mainstream         4829
+11   OLDER SINGLES/COUPLES          Premium         4660
+12                RETIREES           Budget         4362
+13                RETIREES       Mainstream         6318
+14                RETIREES          Premium         3795
+15          YOUNG FAMILIES           Budget         3938
+16          YOUNG FAMILIES       Mainstream         2674
+17          YOUNG FAMILIES          Premium         2384
+18   YOUNG SINGLES/COUPLES           Budget         3637
+19   YOUNG SINGLES/COUPLES       Mainstream         7834
+20   YOUNG SINGLES/COUPLES          Premium         2470

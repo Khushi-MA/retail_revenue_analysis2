@@ -1,0 +1,28 @@
+Total sales by segment:
+                 LIFESTAGE PREMIUM_CUSTOMER  TOT_SALES
+6           OLDER FAMILIES           Budget  154012.55
+19   YOUNG SINGLES/COUPLES       Mainstream  143832.40
+13                RETIREES       Mainstream  141969.15
+15          YOUNG FAMILIES           Budget  126942.05
+9    OLDER SINGLES/COUPLES           Budget  124752.80
+10   OLDER SINGLES/COUPLES       Mainstream  122167.10
+11   OLDER SINGLES/COUPLES          Premium  120995.85
+12                RETIREES           Budget  103644.00
+7           OLDER FAMILIES       Mainstream   94674.85
+14                RETIREES          Premium   89308.55
+16          YOUNG FAMILIES       Mainstream   84735.45
+1   MIDAGE SINGLES/COUPLES       Mainstream   82790.35
+17          YOUNG FAMILIES          Premium   77074.50
+8           OLDER FAMILIES          Premium   73607.40
+18   YOUNG SINGLES/COUPLES           Budget   55923.60
+2   MIDAGE SINGLES/COUPLES          Premium   53454.35
+20   YOUNG SINGLES/COUPLES          Premium   38290.70
+0   MIDAGE SINGLES/COUPLES           Budget   32724.20
+3             NEW FAMILIES           Budget   20002.45
+4             NEW FAMILIES       Mainstream   15646.80
+5             NEW FAMILIES          Premium   10564.50
+
+
+OLDER FAMILIES / Budget — top segment by total sales ($154,012), and also has one of the largest customer counts (4,589). So its high revenue looks driven by having lots of customers, not necessarily big spenders individually.
+YOUNG SINGLES/COUPLES / Mainstream — 2nd highest total sales ($143,832), but has by far the most customers of any segment (7,834 — nearly double Older Families/Budget). That's actually a red flag: with way more customers, you'd expect much higher total sales if each person spent similarly — so each individual in this segment might actually be spending less on average than a segment with fewer people but similar total sales.
+RETIREES / Mainstream — 3rd highest sales ($141,969) with 6,318 customers — again a lot of customers.
