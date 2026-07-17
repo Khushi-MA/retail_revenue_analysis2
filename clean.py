@@ -29,7 +29,7 @@ def check_inconsistent_prod_name_number(df):
         print(df[df['PROD_NAME'].isin(problem_names)][['PROD_NBR', 'PROD_NAME']].drop_duplicates().sort_values('PROD_NAME'))
 
 
-def clean_transaction_function(df, brand_map, qty_outlier_threshold):
+def clean_transaction_function(df, brand_map, clean_transaction_file_name, qty_outlier_threshold):
     print("Cleaning transaction data...")
     print("Shape before cleaning: ", df.shape, "\n")
 
@@ -75,10 +75,13 @@ def clean_transaction_function(df, brand_map, qty_outlier_threshold):
     df["BRAND"] = df["BRAND"].replace(brand_map)
     print("Due to inconsistency, replaced the brand name with the mapped value in brand_map")
 
-    for raw, standardized in sorted(brand_map.items(), key = lambda x: -len(x[0].split())):
+    for raw, standardized in sorted(brand_map.items(), key=lambda x: -len(x[0].split())):
+        if raw == standardized:
+            continue  # nothing to fix
         pattern = r'^' + re.escape(raw) + r'\b'
-        df["PROD_NAME"] = df["PROD_NAME"].str.replace(pattern, standardized, regex=True)
-    print("Then replaced the inconsistent brand names in product names\n")
+        already_correct = df["PROD_NAME"].str.startswith(standardized)
+        needs_fix = df["PROD_NAME"].str.match(pattern) & ~already_correct
+        df.loc[needs_fix, "PROD_NAME"] = df.loc[needs_fix, "PROD_NAME"].str.replace(pattern, standardized, regex=True)
 
     print("Checking inconsistent product names and numbers...")
     check_inconsistent_prod_name_number(df)
@@ -90,13 +93,13 @@ def clean_transaction_function(df, brand_map, qty_outlier_threshold):
     print(f"Duplicate {before - len(df)} rows removed\n")
 
     print("Total duplicate txn_id... same transaction with multiple products: ", df["TXN_ID"].duplicated().sum(), "\n")
-
     print("Shape after cleaning: ", df.shape)
-
+    
     print("Cleaning completed, returned df")
+    df.to_csv(clean_transaction_file_name, index=False)
     return df
 
-def clean_purchase_behaviour_function(df):
+def clean_purchase_behaviour_function(df, clean_purchase_behaviour_file_name):
     print("Cleaning purchases data...")
     print("Shape before cleaning: ", df.shape)
 
@@ -104,9 +107,10 @@ def clean_purchase_behaviour_function(df):
 
     print("Shape after cleaning: ", df.shape)
     print("Cleaning completed, returned df")
+    df.to_csv(clean_purchase_behaviour_file_name, index=False)
     return df
 
-def extract_chips_data(df, exclude_products):
+def extract_chips_data(df, exclude_products, chips_file_name):
     print("Filtering chips data...")
 
     before = len(df)
@@ -119,4 +123,12 @@ def extract_chips_data(df, exclude_products):
     print(f"\nDropped {before - len(df)} non-chip rows")
     print("Returned chip data")
 
+    df.to_csv(chips_file_name, index=False)
+    return df
+
+def merge_df_function(df_transactions_cleaned, df_purchase_behaviour, clean_merge_file_name, on="LYLTY_CARD_NBR", how="left"):
+    df = df_transactions_cleaned.merge(df_purchase_behaviour, on=on, how=how)
+    print("Both the data merged into one with common LYLTY_CARD_NBR column\nNew data shape: ", df.shape)
+    
+    df.to_csv(clean_merge_file_name, index=False)
     return df
