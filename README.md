@@ -53,16 +53,16 @@ Customers showed a strong preference for medium-sized packs (150g–175g).
 ## Visualizations
 
 ### Total Sales by Lifestage
-![Total Sales by Lifestage](graphs/task1.png)
+![Total Sales by Lifestage](graphs1/task1.png)
 
 ### Sales by Customer Affluence Segment
-![Sales by Affluence Segment](graphs/sales%20customer%20affluence.png)
+![Sales by Affluence Segment](graphs1/sales%20customer%20affluence.png)
 
 ### Top 10 Brands by Sales
-![Top Brands](graphs/brands%2010%20total.png)
+![Top Brands](graphs1/brands%2010%20total.png)
 
 ### Sales by Lifestage and Affluence
-![Lifestage vs Affluence](graphs/lifestage%20customer%20affluence.png)
+![Lifestage vs Affluence](graphs1/lifestage%20customer%20affluence.png)
 
 ---
 
@@ -77,22 +77,22 @@ The effectiveness of trial stores was evaluated by comparing them against statis
 | 88 | 178 | Significant uplift during trial period |
 
 ### Store 77 vs Control Store 233
-![Store 77 vs 233](graphs/str%20vs%20ctrl%201.png)
+![Store 77 vs 233](graphs1/str%20vs%20ctrl%201.png)
 
 ### Store 86 vs Control Store 155
-![Store 86 vs 155](graphs/str%20vs%20ctrl%202.png)
+![Store 86 vs 155](graphs1/str%20vs%20ctrl%202.png)
 
 ### Store 88 vs Control Store 178
-![Store 88 vs 178](graphs/str%20vs%20ctrl%203.png)
+![Store 88 vs 178](graphs1/str%20vs%20ctrl%203.png)
 
 ### Trial Sales Performance
-![Trial Sales Performance](graphs/act%20exp%201.png)
+![Trial Sales Performance](graphs1/act%20exp%201.png)
 
 ### Trial Customer Performance
-![Trial Customer Performance](graphs/act%20exp%202.png)
+![Trial Customer Performance](graphs1/act%20exp%202.png)
 
 ### Trial Transactions Performance
-![Trial Transactions Performance](graphs/act%20exp%203.png)
+![Trial Transactions Performance](graphs1/act%20exp%203.png)
 
 ---
 
