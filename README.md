@@ -3,7 +3,7 @@
 ## Overview
 This project analyzes **264,835 transactions** from **72,637 customers** across **272 stores** to identify key sales drivers, customer segments, product preferences, and evaluate trial store performance.
 
-### Key Metrics
+## Key Metrics
 | Metric | Value |
 |----------|----------|
 | Total Sales | $1.93M |
@@ -19,96 +19,94 @@ This project analyzes **264,835 transactions** from **72,637 customers** across 
 - Understand sales performance and customer purchasing behavior.
 - Identify high-value customer segments.
 - Evaluate brand and pack-size performance.
-- Measure the effectiveness of trial store initiatives.
-- Provide actionable recommendations for category growth.
+- Measure the effectiveness of trial store initiatives (77, 86, 88).
 
----
-
-## Key points
+## Key Points
 
 ### Customer Segments
 - **Older Singles/Couples** generated the highest overall sales.
 - **Retirees** and **Older Families** were major revenue contributors.
 - **Mainstream customers** produced the largest share of revenue.
 
-### Brand Performance
-Top-performing brands:
-1. Kettle
-2. Smiths
-3. Doritos
-4. Pringles
-
-### Pack Size Performance
-Most popular pack sizes:
-- 175g
-- 150g
-- 134g
-- 110g
-- 170g
-
-Customers showed a strong preference for medium-sized packs (150g–175g).
+### Lifestages
+- Young Singles/Couples
+- Midage Singles/Couples
+- Older Singles/Couples
+- New Families
+- Young Families
+- Older Families
+- Retirees
 
 ---
 
-## Visualizations
+## Important analysis points
 
-### Total Sales by Lifestage
-![Total Sales by Lifestage](graphs1/task1.png)
+### Sales by segment
+#### Where the graph tells you one story about retirees and couples being the biggest market
+![Sales by segment](charts/sales_by_segment.png)
 
-### Sales by Customer Affluence Segment
-![Sales by Affluence Segment](graphs1/sales%20customer%20affluence.png)
+### Average spend per customer
+#### Families are the most valuable chip customers, but not the biggest group - the current focus on total sales overlooks who actually drives value per customer.
+![Average spend per customer](charts/avg_spend_per_customer.png)
 
-### Top 10 Brands by Sales
-![Top Brands](graphs1/brands%2010%20total.png)
+### Pack size mix
+#### Its the small and the standard packs being sold more compared to larger packs
+![Pack size mix](charts/pack_size_mix.png)
 
-### Sales by Lifestage and Affluence
-![Lifestage vs Affluence](graphs1/lifestage%20customer%20affluence.png)
+### Monthly sales trend
+#### Sales peak sharply in Nov–Dec and drop in February.
+![Monthly sales trend](charts/monthly_sales_trend.png)
 
----
-
-## Trial Store Analysis
-
-The effectiveness of trial stores was evaluated by comparing them against statistically matched control stores.
-
-| Trial Store | Control Store | Result |
-|------------|--------------|---------|
-| 77 | 233 | No significant difference |
-| 86 | 155 | No significant difference |
-| 88 | 178 | Significant uplift during trial period |
-
-### Store 77 vs Control Store 233
-![Store 77 vs 233](graphs1/str%20vs%20ctrl%201.png)
-
-### Store 86 vs Control Store 155
-![Store 86 vs 155](graphs1/str%20vs%20ctrl%202.png)
-
-### Store 88 vs Control Store 178
-![Store 88 vs 178](graphs1/str%20vs%20ctrl%203.png)
-
-### Trial Sales Performance
-![Trial Sales Performance](graphs1/act%20exp%201.png)
-
-### Trial Customer Performance
-![Trial Customer Performance](graphs1/act%20exp%202.png)
-
-### Trial Transactions Performance
-![Trial Transactions Performance](graphs1/act%20exp%203.png)
+### Top brands - Sales v/s Count
+![Top brands sales vs count](charts/top_brands_sales_vs_count.png)
 
 ---
 
-## Tech Stack
+## Trial store analysis with Control store
 
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- SciPy
-- Jupyter Notebook
+Each trial store was matched to a control store with a near-identical pre-trial sales pattern, isolating the layout's true effect from normal seasonal variation
 
+| Total Sales | Number of Customers |
+|-------------|---------------------|
+| ![Total Sales](charts/trial_analysis_charts/pretrial_check_77_vs_233_TOTAL_SALES.png) | ![Customers](charts/trial_analysis_charts/pretrial_check_77_vs_233_N_CUSTOMERS.png) |
+
+## Trial store configuration
+
+| Parameter | Value |
+|------------|---------|
+| Trial Stores | 77, 86, 88 |
+| Pre-Trial Period | Jul 2018 – Jan 2019 |
+| Trial Period | Feb 2019 – Apr 2019 |
+| Evaluation Metrics | Total Sales, Number of Customers |
+
+## Analysis
+
+#### Store 77 shows a significant, accelerating sales increase — successful trial.
+
+<p align="center">
+  <img src="charts/trial_analysis_charts/trial_vs_control_77_TOTAL_SALES.png" alt="Trial Store 77 Total Sales" width="49%">
+  <img src="charts/trial_analysis_charts/trial_vs_control_77_N_CUSTOMERS.png" alt="Trial Store 77 Number of Customers" width="49%">
+</p>
+
+
+#### Store 86 shows a significant but single-month spike — partially successful, worth further investigation.
+
+| Total Sales | Number of Customers |
+|-------------|---------------------|
+| ![Total Sales](charts/trial_analysis_charts/trial_vs_control_86_TOTAL_SALES.png) | ![Customers](charts/trial_analysis_charts/trial_vs_control_86_N_CUSTOMERS.png) |
+
+
+#### Store 88 shows early gains that fade by the final month — inconclusive, and its control match was weaker.
+
+<p align="center">
+  <img src="charts/trial_analysis_charts/trial_vs_control_88_TOTAL_SALES.png" alt="Trial Store 88 Total Sales" width="49%">
+  <img src="charts/trial_analysis_charts/trial_vs_control_88_N_CUSTOMERS.png" alt="Trial Store 88 Number of Customers" width="49%">
+</p>
 
 ---
 
-## Outcome
+## Summary
 
-The analysis identified the customer segments, brands, and product sizes driving category performance while validating the impact of trial-store initiatives. Results provide clear opportunities for targeted promotions, improved inventory planning, and scalable growth strategies.
+Family segments (Older & Young Families) are the highest-value chip customers per person - driven by buying more often, not by price, pack size, or brand choice. Sales peak sharply in Nov–Dec and drop in February.
+
+The trial layout drove a statistically significant sales increase in all 3 trial stores, primarily through more customers shopping - supporting a wider rollout, though Store 88's result warrants a closer look.
