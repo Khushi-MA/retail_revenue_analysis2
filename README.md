@@ -66,9 +66,11 @@ This project analyzes **264,835 transactions** from **72,637 customers** across 
 
 Each trial store was matched to a control store with a near-identical pre-trial sales pattern, isolating the layout's true effect from normal seasonal variation
 
-| Total Sales | Number of Customers |
-|-------------|---------------------|
-| ![Total Sales](charts/trial_analysis_charts/pretrial_check_77_vs_233_TOTAL_SALES.png) | ![Customers](charts/trial_analysis_charts/pretrial_check_77_vs_233_N_CUSTOMERS.png) |
+<p align="center">
+  <img src="charts/trial_analysis_charts/pretrial_check_77_vs_233_TOTAL_SALES.png" alt="Trial Store 77 Total Sales" width="49%">
+  <img src="charts/trial_analysis_charts/pretrial_check_77_vs_233_N_CUSTOMERS.png" alt="Trial Store 77 Customers" width="49%">
+</p>
+
 
 ## Trial store configuration
 
@@ -91,9 +93,10 @@ Each trial store was matched to a control store with a near-identical pre-trial 
 
 #### Store 86 shows a significant but single-month spike — partially successful, worth further investigation.
 
-| Total Sales | Number of Customers |
-|-------------|---------------------|
-| ![Total Sales](charts/trial_analysis_charts/trial_vs_control_86_TOTAL_SALES.png) | ![Customers](charts/trial_analysis_charts/trial_vs_control_86_N_CUSTOMERS.png) |
+<p align="center">
+  <img src="charts/trial_analysis_charts/trial_vs_control_86_TOTAL_SALES.png" alt="Trial Store 86 Total Sales" width="49%">
+  <img src="charts/trial_analysis_charts/trial_vs_control_86_N_CUSTOMERS.png" alt="Trial Store 86 Number of Customers" width="49%">
+</p>
 
 
 #### Store 88 shows early gains that fade by the final month — inconclusive, and its control match was weaker.
