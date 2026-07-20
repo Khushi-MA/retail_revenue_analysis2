@@ -1,7 +1,20 @@
 # Quantium Retail Analytics – Chips Category Review
 
 ## Overview
-This project analyzes **264,835 transactions** from **72,637 customers** across **272 stores** to identify key sales drivers, customer segments, product preferences, and evaluate trial store performance.
+This project analyzes **chip category sales** for a retail client to understand **customer purchasing patterns** and evaluate the impact of a new **store layout trial**. 
+
+I built an **end-to-end Python pipeline** to clean and standardize retail data, engineer product features, and segment customers by lifestage and spending behavior. 
+
+The analysis revealed that while Retirees and Singles/Couples generated the highest total sales, Family segments delivered the highest value per customer due to more frequent purchases. 
+
+Sales also showed strong seasonal peaks during the December–January holiday period. 
+
+To assess the layout trial, I matched each trial store with a statistically comparable control store using correlation and magnitude-distance metrics, then applied hypothesis testing to isolate the trial's impact from normal variation.
+
+Results showed significant sales growth across all trial stores, driven primarily by increased customer traffic rather than higher spending per visit.
+
+---
+---
 
 ## Key Metrics
 | Metric | Value |
@@ -13,13 +26,14 @@ This project analyzes **264,835 transactions** from **72,637 customers** across 
 | Stores Analyzed | 272 |
 | Avg. Transaction Value | $7.30 |
 
----
-
 ## Business Objectives
 - Understand sales performance and customer purchasing behavior.
 - Identify high-value customer segments.
 - Evaluate brand and pack-size performance.
 - Measure the effectiveness of trial store initiatives (77, 86, 88).
+
+---
+---
 
 ## Key Points
 
@@ -37,6 +51,7 @@ This project analyzes **264,835 transactions** from **72,637 customers** across 
 - Older Families
 - Retirees
 
+---
 ---
 
 ## Important analysis points
@@ -60,6 +75,7 @@ This project analyzes **264,835 transactions** from **72,637 customers** across 
 ### Top brands - Sales v/s Count
 ![Top brands sales vs count](charts/top_brands_sales_vs_count.png)
 
+---
 ---
 
 ## Trial store analysis with Control store
@@ -106,6 +122,7 @@ Each trial store was matched to a control store with a near-identical pre-trial 
   <img src="charts/trial_analysis_charts/trial_vs_control_88_N_CUSTOMERS.png" alt="Trial Store 88 Number of Customers" width="49%">
 </p>
 
+---
 ---
 
 ## Summary

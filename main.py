@@ -67,6 +67,7 @@ def load_data_file(file_name, date_cols=None):
 
     return df
 
+
 print("\n------------------------------------------------------------------------")
 print("File/Folder variables...")
 print("------------------------------------------------------------------------")
@@ -118,16 +119,16 @@ analysis_data_folder = create_folder(analysis_data_folder)
 analysis_results = analyse_df(df_chips, analysis_data_folder)
 
 
-# print("\n------------------------------------------------------------------------")
-# print("Visualisation...")
-# print("------------------------------------------------------------------------")
-# charts_folder = create_folder(charts_folder)
-# visualise_df(df_chips, analysis_results, charts_folder)
+print("\n------------------------------------------------------------------------")
+print("Visualisation...")
+print("------------------------------------------------------------------------")
+charts_folder = create_folder(charts_folder)
+visualise_df(df_chips, analysis_results, charts_folder)
 
 
 
 print("\n------------------------------------------------------------------------")
-print("Task 2: Store Trial Analysis...")
+print("Part 2: Store Trial Analysis...")
 print("------------------------------------------------------------------------")
 
 charts_folder = "charts"
@@ -137,7 +138,7 @@ PRE_TRIAL_MONTHS = ['2018-07', '2018-08', '2018-09', '2018-10', '2018-11', '2018
 TRIAL_MONTHS = ['2019-02', '2019-03', '2019-04']
 METRICS = ['TOTAL_SALES', 'N_CUSTOMERS']
 
-print("\n--- Step 1: Build monthly per-store summary ---")
+print("\nBuild monthly per-store summary ------------------------------------------------------------------------")
 store_monthly = build_store_monthly_summary(df_chips)
 store_monthly_complete = filter_stores_with_required_periods(store_monthly, PRE_TRIAL_MONTHS, TRIAL_MONTHS)
 check_complete_data_in_trial_stores(store_monthly_complete, trial_stores)
@@ -147,24 +148,24 @@ trial_period = store_monthly_complete[store_monthly_complete['YEARMONTH'].isin(T
 print(f"Pre-trial: {pre_trial['YEARMONTH'].nunique()} months, {pre_trial.shape[0]} rows")
 print(f"Trial period: {trial_period['YEARMONTH'].nunique()} months, {trial_period.shape[0]} rows")
 
-print("\n--- Step 2: Select best control store for each trial store ---")
+print("\nSelect best control store for each trial store------------------------------------------------------------------------")
 best_control_77, scores_77 = find_control_store(pre_trial, trial_store=77, exclude_stores=trial_stores)
 best_control_86, scores_86 = find_control_store(pre_trial, trial_store=86, exclude_stores=trial_stores)
 best_control_88, scores_88 = find_control_store(pre_trial, trial_store=88, exclude_stores=trial_stores)
 
 pairs = [(77, best_control_77), (86, best_control_86), (88, best_control_88)]
 
-print("\n--- Step 3: Visually validate control matches (pre-trial period) ---")
+print("\nVisually validate control matches (pre-trial period)------------------------------------------------------------------------")
 for trial, control in pairs:
     plot_trial_vs_control_pretrial(pre_trial, trial, control, 'TOTAL_SALES', trial_analysis_charts)
     plot_trial_vs_control_pretrial(pre_trial, trial, control, 'N_CUSTOMERS', trial_analysis_charts)
 
-print("\n--- Step 4: Compare trial vs. scaled control (raw % difference) ---")
+print("\nCompare trial vs. scaled control (raw % difference)------------------------------------------------------------------------")
 result_77_sales = compare_trial_vs_control(pre_trial, trial_period, 77, best_control_77, 'TOTAL_SALES')
 result_86_sales = compare_trial_vs_control(pre_trial, trial_period, 86, best_control_86, 'TOTAL_SALES')
 result_88_sales = compare_trial_vs_control(pre_trial, trial_period, 88, best_control_88, 'TOTAL_SALES')
 
-print("\n--- Step 5: Statistical significance testing (all stores, both metrics) ---")
+print("\nStatistical significance testing (all stores, both metrics)------------------------------------------------------------------------")
 all_results = {}
 for trial, control in pairs:
     for metric in METRICS:
@@ -172,7 +173,7 @@ for trial, control in pairs:
         print(f"\n{'='*60}\nStore {trial} vs Control {control} — {metric}\n{'='*60}")
         all_results[key] = test_significance(pre_trial, trial_period, trial, control, metric)
 
-print("\n--- Step 6: Visualize trial vs. scaled control (full timeline) ---")
+print("\nVisualize trial vs. scaled control (full timeline)------------------------------------------------------------------------")
 for trial, control in pairs:
     for metric in METRICS:
         key = f"{trial}_{metric}"
