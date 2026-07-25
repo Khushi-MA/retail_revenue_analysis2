@@ -67,10 +67,12 @@ def load_data_file(file_name, date_cols=None):
 
     return df
 
-
-print("\n------------------------------------------------------------------------")
+# ---------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
 print("File/Folder variables...")
-print("------------------------------------------------------------------------")
+print(f"{'-'*60}")
+
 data_folder = "data"
 transaction_file_name = f"{data_folder}/QVI_transaction_data.xlsx"
 purchase_behaviour_file_name = f"{data_folder}/QVI_purchase_behaviour.csv"
@@ -89,10 +91,11 @@ charts_folder = "charts"
 trial_analysis_charts = f"{charts_folder}/trial_analysis_charts"
 
 
-
-print("\n------------------------------------------------------------------------")
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
 print("Cleaning...")
-print("------------------------------------------------------------------------")
+print(f"{'-'*60}")
+
 df_transactions = load_data_file(transaction_file_name)
 df_purchase_behaviour = load_data_file(purchase_behaviour_file_name)
 clean_data_folder = create_folder(clean_data_folder)
@@ -100,36 +103,44 @@ df_transactions_cleaned = clean_transaction_function(df_transactions, brand_map,
 df_purchase_behaviour_cleaned = clean_purchase_behaviour_function(df_purchase_behaviour, clean_purchase_behaviour_file_name)
 
 
-print("\n------------------------------------------------------------------------")
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
 print("Merging...")
-print("------------------------------------------------------------------------")
+print(f"{'-'*60}")
+
 df_merged = merge_df_function(df_transactions_cleaned, df_purchase_behaviour, clean_merge_file_name, on="LYLTY_CARD_NBR", how="left")
 
 
-print("\n------------------------------------------------------------------------")
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
 print("Extract Chips...")
-print("------------------------------------------------------------------------")
+print(f"{'-'*60}")
+
 df_chips = extract_chips_data(df_merged, exclude_products, chips_file_name)
 
 
-print("\n------------------------------------------------------------------------")
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
 print("Analysis...")
-print("------------------------------------------------------------------------")
+print(f"{'-'*60}")
+
 analysis_data_folder = create_folder(analysis_data_folder)
 analysis_results = analyse_df(df_chips, analysis_data_folder)
 
 
-print("\n------------------------------------------------------------------------")
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
 print("Visualisation...")
-print("------------------------------------------------------------------------")
+print(f"{'-'*60}")
+
 charts_folder = create_folder(charts_folder)
 visualise_df(df_chips, analysis_results, charts_folder)
 
 
-
-print("\n------------------------------------------------------------------------")
-print("Part 2: Store Trial Analysis...")
-print("------------------------------------------------------------------------")
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
+print("Part 2: Trial Store vs Control Store Setup")
+print(f"{'-'*60}")
 
 charts_folder = "charts"
 trial_analysis_charts = create_folder(trial_analysis_charts)
@@ -138,7 +149,12 @@ PRE_TRIAL_MONTHS = ['2018-07', '2018-08', '2018-09', '2018-10', '2018-11', '2018
 TRIAL_MONTHS = ['2019-02', '2019-03', '2019-04']
 METRICS = ['TOTAL_SALES', 'N_CUSTOMERS']
 
-print("\nBuild monthly per-store summary ------------------------------------------------------------------------")
+
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
+print("Build monthly per-store summary Filter stores with required data")
+print(f"{'-'*60}")
+
 store_monthly = build_store_monthly_summary(df_chips)
 store_monthly_complete = filter_stores_with_required_periods(store_monthly, PRE_TRIAL_MONTHS, TRIAL_MONTHS)
 check_complete_data_in_trial_stores(store_monthly_complete, trial_stores)
@@ -148,24 +164,43 @@ trial_period = store_monthly_complete[store_monthly_complete['YEARMONTH'].isin(T
 print(f"Pre-trial: {pre_trial['YEARMONTH'].nunique()} months, {pre_trial.shape[0]} rows")
 print(f"Trial period: {trial_period['YEARMONTH'].nunique()} months, {trial_period.shape[0]} rows")
 
-print("\nSelect best control store for each trial store------------------------------------------------------------------------")
+
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
+print("Select best control store for each trial store")
+print(f"{'-'*60}")
+
 best_control_77, scores_77 = find_control_store(pre_trial, trial_store=77, exclude_stores=trial_stores)
 best_control_86, scores_86 = find_control_store(pre_trial, trial_store=86, exclude_stores=trial_stores)
 best_control_88, scores_88 = find_control_store(pre_trial, trial_store=88, exclude_stores=trial_stores)
 
 pairs = [(77, best_control_77), (86, best_control_86), (88, best_control_88)]
 
-print("\nVisually validate control matches (pre-trial period)------------------------------------------------------------------------")
+
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
+print("Visually validate control matches (pre-trial period)")
+print(f"{'-'*60}")
+
 for trial, control in pairs:
     plot_trial_vs_control_pretrial(pre_trial, trial, control, 'TOTAL_SALES', trial_analysis_charts)
     plot_trial_vs_control_pretrial(pre_trial, trial, control, 'N_CUSTOMERS', trial_analysis_charts)
 
-print("\nCompare trial vs. scaled control (raw % difference)------------------------------------------------------------------------")
+
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
+print("Compare trial vs. scaled control (raw % difference)")
+print(f"{'-'*60}")
 result_77_sales = compare_trial_vs_control(pre_trial, trial_period, 77, best_control_77, 'TOTAL_SALES')
 result_86_sales = compare_trial_vs_control(pre_trial, trial_period, 86, best_control_86, 'TOTAL_SALES')
 result_88_sales = compare_trial_vs_control(pre_trial, trial_period, 88, best_control_88, 'TOTAL_SALES')
 
-print("\nStatistical significance testing (all stores, both metrics)------------------------------------------------------------------------")
+
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
+print("Statistical significance testing (all stores, both metrics)")
+print(f"{'-'*60}")
+
 all_results = {}
 for trial, control in pairs:
     for metric in METRICS:
@@ -173,9 +208,17 @@ for trial, control in pairs:
         print(f"\n{'='*60}\nStore {trial} vs Control {control} — {metric}\n{'='*60}")
         all_results[key] = test_significance(pre_trial, trial_period, trial, control, metric)
 
-print("\nVisualize trial vs. scaled control (full timeline)------------------------------------------------------------------------")
+
+# ---------------------------------------------------------------------------------------
+print(f"\n{'-'*60}")
+print("Visualize trial vs. scaled control (full timeline)")
+print(f"{'-'*60}")
+
+
 for trial, control in pairs:
     for metric in METRICS:
         key = f"{trial}_{metric}"
         plot_trial_vs_scaled_control(pre_trial, trial_period, trial, control, metric, all_results[key], trial_analysis_charts)
+
+
 

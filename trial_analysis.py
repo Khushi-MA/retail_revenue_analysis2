@@ -8,6 +8,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import stats
 
+color1 = "teal"
+color2 = "coral"
+color3 = "maroon"
+
 
 # ============================================================
 # SECTION 1: Build & filter store-level monthly data
@@ -170,7 +174,7 @@ def plot_trial_vs_control_pretrial(pre_trial, trial_store, control_store, metric
     """Plots trial vs. control's raw (unscaled) values over the pre-trial period, to visually validate the match."""
     subset = pre_trial[pre_trial['STORE_NBR'].isin([trial_store, control_store])]
     fig, ax = plt.subplots(figsize=(10, 5))
-    for store, label, color in [(trial_store, 'Trial', 'crimson'), (control_store, 'Control', 'steelblue')]:
+    for store, label, color in [(trial_store, 'Trial', color1), (control_store, 'Control', color2)]:
         store_data = subset[subset['STORE_NBR'] == store].sort_values('YEARMONTH')
         ax.plot(store_data['YEARMONTH'], store_data[metric_col], marker='o', label=f'{label} (Store {store})', color=color)
     ax.set_title(f'Pre-Trial {metric_col}: Store {trial_store} vs Control {control_store}')
@@ -197,8 +201,8 @@ def plot_trial_vs_scaled_control(pre_trial, trial_period, trial_store, control_s
     control_data[f'SCALED_{metric_col}'] = control_data[metric_col] * scaling_factor
 
     fig, ax = plt.subplots(figsize=(12, 6))
-    ax.plot(trial_data['YEARMONTH'], trial_data[metric_col], marker='o', label=f'Trial (Store {trial_store})', color='crimson', linewidth=2)
-    ax.plot(control_data['YEARMONTH'], control_data[f'SCALED_{metric_col}'], marker='o', label=f'Scaled Control (Store {control_store})', color='steelblue', linewidth=2)
+    ax.plot(trial_data['YEARMONTH'], trial_data[metric_col], marker='o', label=f'Trial (Store {trial_store})', color=color1, linewidth=2)
+    ax.plot(control_data['YEARMONTH'], control_data[f'SCALED_{metric_col}'], marker='o', label=f'Scaled Control (Store {control_store})', color=color2, linewidth=2)
 
     trial_months = trial_period['YEARMONTH'].unique()
     ax.axvspan(trial_months[0], trial_months[-1], color='yellow', alpha=0.15, label='Trial Period')
@@ -207,7 +211,7 @@ def plot_trial_vs_scaled_control(pre_trial, trial_period, trial_store, control_s
     for month in sig_months:
         y_val = trial_data.loc[trial_data['YEARMONTH'] == month, metric_col].values[0]
         ax.annotate('*', (month, y_val), textcoords="offset points", xytext=(0, 10),
-                    ha='center', fontsize=20, color='darkgreen', fontweight='bold')
+                    ha='center', fontsize=20, color=color3, fontweight='bold')
 
     ax.set_title(f'Store {trial_store} vs Scaled Control {control_store} — {metric_col}\n(* = statistically significant month)')
     ax.set_xlabel('Month')
