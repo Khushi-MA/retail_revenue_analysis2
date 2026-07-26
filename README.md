@@ -14,7 +14,6 @@ To assess the layout trial, I matched each trial store with a statistically comp
 Results showed significant sales growth across all trial stores, driven primarily by increased customer traffic rather than higher spending per visit.
 
 ---
----
 
 ## Key Metrics
 | Metric | Value |
@@ -32,7 +31,6 @@ Results showed significant sales growth across all trial stores, driven primaril
 - Evaluate brand and pack-size performance.
 - Measure the effectiveness of trial store initiatives (77, 86, 88).
 
----
 ---
 
 ## Key Points
@@ -52,9 +50,8 @@ Results showed significant sales growth across all trial stores, driven primaril
 - Retirees
 
 ---
----
 
-## Important analysis points
+## Exploratory Analysis  
 
 ### Sales by segment
 #### Where the graph tells you one story about retirees and couples being the biggest market
@@ -86,9 +83,8 @@ Results showed significant sales growth across all trial stores, driven primaril
 </p>
 
 ---
----
 
-## Trial store analysis with Control store
+## Matching a control store with trial store
 
 Each trial store was matched to a control store with a near-identical pre-trial sales pattern, isolating the layout's true effect from normal seasonal variation
 
@@ -107,7 +103,7 @@ Each trial store was matched to a control store with a near-identical pre-trial 
 | Trial Period | Feb 2019 – Apr 2019 |
 | Evaluation Metrics | Total Sales, Number of Customers |
 
-## Analysis
+## Trial store v/s control store
 
 #### Store 77 shows a significant, accelerating sales increase — successful trial.
 
@@ -133,10 +129,76 @@ Each trial store was matched to a control store with a near-identical pre-trial 
 </p>
 
 ---
----
 
 ## Summary
 
 Family segments (Older & Young Families) are the highest-value chip customers per person - driven by buying more often, not by price, pack size, or brand choice. Sales peak sharply in Nov–Dec and drop in February.
 
 The trial layout drove a statistically significant sales increase in all 3 trial stores, primarily through more customers shopping - supporting a wider rollout, though Store 88's result warrants a closer look.
+
+## Project Structure
+
+```text
+.
+├── raw_data/
+├── clean_data/
+├── charts/
+│   └── trial_analysis_charts/
+├── analyse.py
+├── clean.py
+├── visualise.py
+├── trial_analysis.py
+├── main.py
+├── requirements.txt
+└── README.md
+```
+
+## How to Run
+
+1. Clone the repository.
+
+```bash
+git clone <repo-url>
+cd retail_revenue_analysis2
+```
+
+2. Create a virtual environment.
+
+```bash
+python -m venv venv
+```
+
+3. Activate it.
+
+
+```bash
+# windows
+venv\Scripts\activate
+
+# Linux/macOS
+source venv/bin/activate
+```
+
+4. Install dependencies.
+
+```bash
+pip install -r requirements.txt
+```
+
+5. Run the pipeline.
+
+```bash
+python main.py
+```
+
+The pipeline will:
+- Clean the raw datasets
+- Generate cleaned datasets
+- Separate the required data (here, chips)
+- Perform customer and product analysis
+- Produce charts
+- Run the trial store v/s control store analysis
+
+## Tips
+
+Check `docs/extras.py` for examples of how to run specific sections of `main.py`, such as only the Trial vs. Control Store analysis or only the visualizations.

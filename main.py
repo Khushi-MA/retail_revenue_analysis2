@@ -73,7 +73,7 @@ print(f"\n{'-'*60}")
 print("File/Folder variables...")
 print(f"{'-'*60}")
 
-data_folder = "data"
+data_folder = "raw_data"
 transaction_file_name = f"{data_folder}/QVI_transaction_data.xlsx"
 purchase_behaviour_file_name = f"{data_folder}/QVI_purchase_behaviour.csv"
 
